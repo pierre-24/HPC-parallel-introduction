@@ -1,0 +1,41 @@
+\documentclass[10pt]{beamer}
+
+\usepackage{minted}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,decorations.markings}
+\usetheme{default}
+
+\AtBeginSection[]{
+	\begin{frame}
+		\vfill
+		\centering
+		\begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+			\usebeamerfont{title}\insertsectionhead\par%
+		\end{beamercolorbox}
+		\vfill
+	\end{frame}
+}
+
+\title{Programming in parallel}
+\subtitle{A (quick) overview}
+\author{Pierre Beaujean (Belgian NCC for HPC)}
+\date{v0.1a, November 2021}
+
+\newminted{c}{tabsize=2,bgcolor=gray!10,fontsize=\small}
+\newminted{text}{tabsize=2,bgcolor=gray!10,fontsize=\small}
+
+\begin{document}
+	
+	\maketitle
+
+\newcommand{\cdx}[1]{\textcolor{blue!75!black!85}{\texttt{\itshape #1}}}
+	
+\include{1_intro}
+\include{2_vector}
+\include{3_omp}
+\include{4_mpi}
+\include{5_gpu}
+\include{6_conclusion}
+
+\end{document}
