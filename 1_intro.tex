@@ -17,12 +17,15 @@
 \begin{frame}{Preliminary notes}
 	\begin{itemize}
 		\item Jokes and opinions are my own, not the one of the NCC Belgium ;)
-		\item First of all, ``Premature optimization is the root of all evil'' (Sir Tony Hoare)
-		\item Code optimization is an art, and the result depends on the target architecture (cache size, instruction set, connectivity, etc. See \cdx{lscpu}).
-		\item Here, we will not look for the best optimized code (i.e., using manual optimization techniques such as manual loop unrolling or writing asm). We will just look at the effect of some modifications (and sometimes, the assembler).
+		\item First of all, ``Premature optimization is the root of all evil'' (Sir Tony Hoare). And code optimization is an art, and the result depends on the target architecture (cache size, instruction set, connectivity, etc. See \cdx{lscpu}).
+		\item Here, we will not look for the best optimized code. We will just look at the effect of some modifications (and sometimes, the assembler).
 		\item Codes are in C (but could be in Fortran), compiled with \cdx{gcc} (Intel compiler may provide better results on Intel architectures). 
 		\item Two simple examples from linear algebra (LAPACK): \cdx{*dot} and \cdx{*axpy}. If you ever need that, use libraries instead!
 	\end{itemize}
+\begin{center}
+	\includegraphics[width=.25\textwidth]{qrcode}\\
+	\url{https://github.com/pierre-24/HPC-parallel-introduction}
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]{The examples for today}
@@ -111,6 +114,6 @@ float sdot(int n, float* x, float* y) {
 		\item Ran on AMD EPYC 7542, and compiled with GCC 10.2
 		\item Compilers does a decent job at optimizing (see \url{https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html} for the details)
 		\item \cdx{-O2} and \cdx{-O3} include stuff we will see later on (but you \textbf{should} use \cdx{-O3}, or even \cdx{-Ofast}).
-		\item If you are brave enough \cdx{objdump -dS -M intel <program, compiled with -g>}. Here, gcc chooses to use \cdx{muls(s|d)} (from the old SSE extension).
+		\item If you are brave enough \cdx{objdump -dS -M intel <program, compiled with -g>}.
 	\end{itemize}
 \end{frame}
