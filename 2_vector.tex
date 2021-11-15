@@ -92,15 +92,15 @@ void saxpy(int n, float alpha,
 	\begin{table}
 		\begin{tabular}{p{4.5cm}lll}
 			\toprule
-			&Extension& \cdx{saxpy} & \cdx{daxpy} \\
+			&Instruction& \cdx{saxpy} & \cdx{daxpy} \\
 			\midrule
-			\cdx{\small -O1} & SSE & 30.7 & 31.7 \\
-			\cdx{\small -O1 -ftree-vectorize} & SSE + l.u. & 16.0 & 27.3 \\
-			\cdx{\small -O1 -ftree-vectorize \mbox{-m}arch=native -mtune=native}  & AVX2 + l.u. & 14.5 & 25.8 \\
-			\cdx{\small -O1 -lm -ftree-vectorize -mavx2} & SSE + AVX2 + l.u. & 16.2 & 27.3 \\
+			\cdx{\small -O1} & \cdx{mulsd} & 30.7 & 31.7 \\
+			\cdx{\small -O1 -ftree-vectorize} & \cdx{mulpd} & 16.0 & 27.3 \\
+			\cdx{\small -O1 -lm -ftree-vectorize -mavx2} & \cdx{vmulpd} + 2 l.u. & 16.2 & 27.3 \\
+			\cdx{\small -O1 -ftree-vectorize \mbox{-m}arch=native -mtune=native}  & \cdx{vmulpd} + 4 l.u. & 14.5 & 25.8 \\
 			\bottomrule
 		\end{tabular}
-	\caption{Average running times (in ms) with \cdx{-N 1000}, on $2^{24}$ numbers.}
+	\caption{Instruction for multiplication of double and average running times (in ms) with \cdx{-N 1000}, on $2^{24}$ numbers.}
 	\end{table}
 \begin{itemize}
 	\item Use \cdx{-march=native -mtune=native} for best performances.
